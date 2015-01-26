@@ -3,10 +3,21 @@ require("sinatra")
 require("sinatra/reloader")
 also_reload("lib/**/*.rb")
 require("./lib/employee")
+require("./lib/division")
 require("pg")
 
 
 get('/') do
+  @divisions = Division.all()
+  @employees = Employee.all()
+  erb(:index)
+end
+
+post("/divisions") do
+  division_name = params.fetch("division_name")
+  division = Division.new({:division_name => division_name})
+  division.save()
+  @divisions = Division.all()
   @employees = Employee.all()
   erb(:index)
 end
@@ -29,4 +40,18 @@ patch("/employees/:id") do
   @employee.update({:first_and_last_name => first_and_last_name})
   @employees = Employee.all()
   erb(:index)
+end
+
+get("/divisions/:id/edit") do
+  @division = Division.find(params.fetch("id").to_i())
+  erb(:division_edit)
+end
+
+get("/divisions/:id") do
+  @division = Division.find(params.fetch("id").to_i())
+  division_name = @division.division_name()
+  @division.update({:division_name => division_name})
+  @divisions = Division.all()
+  @employees = Employee.all()  
+  erb(:division_edit)
 end
