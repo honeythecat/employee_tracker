@@ -1,0 +1,18 @@
+<h1>Employee Tracker</h1>
+
+<p>Here are all your employees:</p>
+
+<ul>
+  <% @employees.each do |employee| %>
+  <li><%= employee.first_and_last_name %></li>
+  <% end %>
+</ul>
+
+<p>Create a new employee:</p>
+
+<form action='/employees' method='post'>
+  <label for='first_and_last_name'>First and last name</label>
+  <input id='first_and_last_name' name='first_and_last_name' type='text'>
+
+  <button type="submit">Add employee</button>
+</form>
