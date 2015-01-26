@@ -4,7 +4,8 @@
 
 <ul>
   <% @employees.each do |employee| %>
-  <li><%= employee.first_and_last_name %></li>
+  <li><%= employee.first_and_last_name %><a href="/employees/<%= employee.id() %>/edit">Update
+  this employee's name.</a></li>
   <% end %>
 </ul>
 

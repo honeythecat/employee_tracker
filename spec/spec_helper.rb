@@ -1,10 +1,13 @@
 require("rspec")
 require("pg")
+require("sinatra/activerecord")
 require("employee")
 
 
 RSpec.configure do |config|
   config.after(:each) do
-    DB.exec("DELETE FROM employees *;")
+    Employee.all().each() do |employee|
+      task.destroy()
+    end
   end
 end
