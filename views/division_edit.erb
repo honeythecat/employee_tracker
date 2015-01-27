@@ -1,4 +1,4 @@
-<h1>Update <%= @division.division_name() %> </h1>
+<h1><%= @division.division_name() %> </h1>
 
 <!-- <form action="/divisions/<%= @division.id() %>/edit" method="post">
   <input name="_method" type="hidden" value="patch">
@@ -9,12 +9,12 @@
 </form> -->
 
 
-<% if @division.employee().any?() %>
+<% if @division.employees().any?() %>
 <h3>Employees for <%= @division.division_name() %>:</h3>
 
 <ul>
   <% @division.employees().each() do |employee| %>
-  <li><%= employee.employee_name() %></li>
+  <li><%= employee.first_and_last_name() %></li>
   <% end %>
 </ul>
 <% else %>

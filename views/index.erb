@@ -34,10 +34,13 @@
 <p>There are no divisions yet!</p>
 <% end %>
 
-
+List of all employees:
+<br>
+<br>
 <ul>
   <% @employees.each do |employee| %>
-  <li><%= employee.first_and_last_name %><a href="/employees/<%= employee.id() %>/edit"> Update
-    this employee's name.</a></li>
+  <li><%= employee.first_and_last_name %>
+ <%= employee.division_id %>
+  </li>
     <% end %>
   </ul>
