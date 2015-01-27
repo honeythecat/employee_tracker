@@ -17,15 +17,8 @@ Run the following command to start the postgreSQL server:
 Run the following command to access psql:
 `psql`
 
-Run the following commands in `psql` to create the databases:
-`CREATE DATABASE hair_salon;`
-`\c hair_salon`
-`CREATE TABLE stylists (id serial PRIMARY KEY, stylist_name varchar);`
-`CREATE TABLE clients (id serial PRIMARY KEY, client_name varchar, stylist_id int);`
-`CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;`
-
-Run the following command to install pg:
-`gem install pg`
+Run the following command to create the databases:
+`rake db:create`
 
 Run the following command to install rspec:
 `gem install rspec`
